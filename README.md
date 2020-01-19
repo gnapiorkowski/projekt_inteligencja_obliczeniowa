@@ -336,3 +336,58 @@ Wynikiem tej analizy jest tabela wyglądająca tak:
 |8|          mieć|60.6|          ... |         oczyć |            56.8|
 |9|        ciągle|59.6|          ... |           zło |            54.8|
 
+## Wyniki i interpretacja
+
+### WordCloud
+
+W folderze [wordcloud2](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/tree/master/wordcloud2)
+znajdują się chmury tagów dla każdego artysty.
+
+Widać po nich, że każdy artysta faktycznie ma swój własny zasób słów - niektórzy bardziej specyficzne od inncyh.
+Wizualizacja tych statystyk na chmurze tagów powoduje bardzo ciekawy efekt,
+w którym autor patrząc na chmurę tagów był w stanie co najmiej
+zgodzić się z tym, że ta chura faktycznie wizualizuje twórczość tego artysty.
+
+Poniżej na przykładzie chmurty tagów Franka Kimono widzimy jak bardzo ten obrazek uchwycił jego twórczość.
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/franek_kimono.png "franek-kimono.png")
+
+Taka wizualizacja nie przyniosła wymiernych naukowych efektów, jednak autor uważa ją za
+bardzo informatywną i ciekawą.
+
+### Similarities Chart
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/graph_after_stemming.png "graph_after_stemming.png")
+
+Na wykresie widzimy, że faktycznie podobieństwa między artystami są różnorakie.
+Uwydatniają się różnice pomiędzy gatunkami muzycznymi i po głębszej analizie
+prawdopodobnie byłoby możliwe zakwafilikowanie każdego artysty do jego gatunku
+muzycznego tylko na podstawie tych podobieństw.
+
+### Topic analysis
+
+Jest to najgłębsze zagadnienie badane w tym projekcie.
+Po wynikach widać, że faktycznie pojawiają się konkretne tematy w badanych tekstach
+i istnieje duży potencjał do dalszej analizy.
+
+
+ |id|Topic 0 words|Topic 0 weights|Topic 1 words| Topic 1 weights| ... |Topic 48 words| Topic 48 weights| Topic 49 words| Topic 49 weights|
+ |-|-|-|-|-|-|-|-|-|-|
+|0|         taki|          266.3|      tańczyć|           301.7| ... |         słowo|            493.4|          dzień|            332.5|
+|1|          sam|          258.5|          dom|           144.9| ... |        zabrać|            129.9|           czas|             81.5|
+|2|       wysoce|           94.4|       wracać|           116.1| ... |           mój|            120.6|           krew|             77.3|
+|3|       chcieć|           69.6|          bal|           105.5| ... |      wiedzieć|             87.5|            zły|             76.8|
+|4|       zostać|           66.6|         mały|            94.5| ... |         serce|             85.1|           swój|             65.2|
+|5|         znać|           64.9|        stary|            79.4| ... |        chwila|             74.5|         ciszyć|             57.9|
+|6|     wiedzieć|           63.1|       taniec|            49.1| ... |           sen|             68.1|         chwila|             57.9|
+|7|        morze|           61.6|        droga|            44.8| ... |         pusty|             65.2|         czarny|             57.5|
+|8|         mieć|           60.6|        niebo|            44.1| ... |           łza|             63.9|          oczyć|             56.8|
+|9|       ciągle|           59.6|          lew|            37.1| ... |          tyli|             63.8|            zło|             54.8|
+
+Szczegółowe wyniki analizy tematów znajdują się w pliku [topics.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics.csv).
+
+Z kolumny słów dla danego tematu możemy wyczytać tematykę,
+natomiast z kolumy wag słów widzimy na co został położony nacisk w danym temacie.
+Widać, że słowa wysoko na listach tematów częściowo pokrywają się z ogólną
+częstotliwością wsytępowania słów w tekstach, co oznacza,
+że **prawo Zipfa** jest w pewnym stopniu spełnione.
