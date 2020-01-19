@@ -74,4 +74,4 @@ no_top_words = 10
 topics = display_topics(model, tf_feature_names, no_top_words)
 print('\n -----------Topics-----------\n')
 print(topics)
-topics.to_csv('topics_main.csv')
+# topics.to_csv('topics_main.csv')

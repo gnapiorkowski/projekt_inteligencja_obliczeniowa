@@ -41,8 +41,8 @@ for author, songs in text.items():
     # plt.axis("off")
     # plt.show()
 
-    # if author == 'marek_grechuta':
-    #     analyzed[2].plot(30)
+    if author == 'marek_grechuta':
+        analyzed[2].plot(30)
     
 def take_first(elem):
     return elem[0]
@@ -65,11 +65,10 @@ def save_to_file(text):
             for line in item[1]:
                 file.write(line+'\n')
 
-def save_to_csv(text):
     
 
 # save_to_file(text)
-save_to_json(text)
+# save_to_json(text)
 
 
 def calculate_similarities(text):
