@@ -324,7 +324,7 @@ Plik ```processed.csv``` ma mieć następującą postać:
 Wynikiem tej analizy jest tabela wyglądająca tak:
 
 |id|Topic 0 words |Topic 0 weights| ... |Topic 49 words |Topic 49 weights|
-|--|--|--|--|--|--|--|
+|-|-|-|-|-|-|-|
 |0|          taki|266.3|          ... |         dzień |           332.5|
 |1|           sam|258.5|          ... |          czas |            81.5|
 |2|        wysoce|94.4|          ... |          krew |            77.3|
