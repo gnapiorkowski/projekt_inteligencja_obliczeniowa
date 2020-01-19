@@ -388,6 +388,10 @@ Szczegółowe wyniki analizy tematów znajdują się w pliku [topics.csv](https:
 
 Z kolumny słów dla danego tematu możemy wyczytać tematykę,
 natomiast z kolumy wag słów widzimy na co został położony nacisk w danym temacie.
+Ciekawym pomysłem jest zbadanie, czy analiza tematu piosenki byłaby w stanie
+poprawić sustem proponowania utworów przez takie platfomy jak Spotify,
+ponieważ wyniki uzyskane w tym projekcie pokazują,
+że istnieje duży potencjał w tej kategorii analizy.
 Widać, że słowa wysoko na listach tematów częściowo pokrywają się z ogólną
 częstotliwością wsytępowania słów w tekstach, co oznacza,
 że **prawo Zipfa** jest w pewnym stopniu spełnione.
