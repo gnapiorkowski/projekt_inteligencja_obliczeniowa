@@ -352,6 +352,22 @@ Poniżej na przykładzie chmurty tagów Franka Kimono widzimy jak bardzo ten obr
 
 ![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/franek_kimono.png "franek-kimono.png")
 
+Chmura dla Czerwonych Gitar:
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/czerwone_gitary.png "czerwone_gitary.png")
+
+Chmura dla Kasi Sobczyk:
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/kasia_sobczyk.png "kasia_sobczyk.png")
+
+Chmura dla Bunkru:
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/bunkier.png "bunkier.png")
+
+Chmura dla Dżemu:
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/wordcloud2/dzem.png "dzem.png")
+
 Taka wizualizacja nie przyniosła wymiernych naukowych efektów, jednak autor uważa ją za
 bardzo informatywną i ciekawą.
 
