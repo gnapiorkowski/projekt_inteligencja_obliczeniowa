@@ -188,6 +188,8 @@ def save_wordcloud_img(analyzed, author):
 ```
 
 Fukcja ta bierze listę słów i autora, a następnie zapisuje gotową chmurę do pliku ```.png```.
+Autor zdecydował się na dużą rozdzielczość obrazków, ponieważ przy pierwszych próbach obrazków nie
+dało się odczytać.
 
 Przykładowa chmura tagów wygenerowana dla Budki Suflera:
 
@@ -239,7 +241,8 @@ możemy pominąć krok:
 ```
 
 i dzięki temu otrzymamy podobieństwo cosinusowe, które uwzględnia częstość powtórzenia się słowa w danym tekście.
-Obie metody są poprawne.
+Obie metody są poprawne. Autor po kilku próbach zdecydował, że takie podobieństwo uwzględniające częstotliwości
+mu bardziej odpowiada, poniważ w jego opinii lepiej oddawało faktyczne podobieństwa obserwowane naocznie.
 
 Żeby otrzymać graf z tymi podobieństwami zwizualizowanymi musimy trochę funkcję ```text_similarities()``` zmodyfikować i
 otrzymujemy coś takiego:
@@ -284,9 +287,18 @@ Po użyciu tej funkcji otrzymujemy taki wykres:
 Funkcja ta pomija najmniejsze podobieństwa, żeby rozluźnić wykres oraz mnoży przez 10,
 a następnie podnosi do kwadratu wartości podobieństw w celu uwydatnienia różnic na grafie.
 
+Autor pierwszą próbę podjął z surowymi danymi podstawionymi do wykresu,
+jednak spowodowało to absolutny brak czytelności. Ilustracja poniżej
+
+![alt-text](https://raw.githubusercontent.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/master/similarities_graph.png "graph2.png")
+
 ### Topic analysis
 
 Ostatnim krokiem jest analiza tematów w tekstach. Dzięki temu zobaczymy jakie tematy pojawiają się w nich.
+Ilość słów i tematów jest dowolna, autor po licznych próbach zcedydował się na 10 słów w analizie ogólnej,
+natomiast 5 w analizie dla pojedynczej piosenki, ze względu na wyższą klarowność.
+Przy analizie konkretnej piosenki autor odkrył, że używanie większej ilości niż jednego tematu powoduje
+zanik ich sensowności, więc zdecydował się na 1 temat dla 1 piosenki.
 
 ```python
 df = pd.read_csv('processed.csv')
@@ -335,6 +347,9 @@ Wynikiem tej analizy jest tabela wyglądająca tak:
 |7|         morze|61.6|          ... |        czarny |            57.5|
 |8|          mieć|60.6|          ... |         oczyć |            56.8|
 |9|        ciągle|59.6|          ... |           zło |            54.8|
+
+Aby otrzymać wyniki dla konkretnych tekstów należy ująć powyższy kod w funkcję i wywołać
+ją dla każdego pliku z osobna.
 
 ## Wyniki i interpretacja
 
@@ -401,9 +416,36 @@ i istnieje duży potencjał do dalszej analizy.
 |9|       ciągle|           59.6|          lew|            37.1| ... |          tyli|             63.8|            zło|             54.8|
 
 Szczegółowe wyniki analizy tematów znajdują się w pliku [topics.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics.csv).
+Oraz w [topics_per_song.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics_per_song.csv) możemy znaleźć listę tematów dla danej piosenki.
 
 Z kolumny słów dla danego tematu możemy wyczytać tematykę,
 natomiast z kolumy wag słów widzimy na co został położony nacisk w danym temacie.
+
+A tak wyglądał wynik dla konkretnej piosenki Maryli Rodowicz - Za duże buty.
+Wybrałem tą piosenkę do zailustrowania przykładu, ponieważ jest ona pisana metaformai,
+a topic analysis, który przeprowadziliśmy nie umie ich interpretować jednak
+zaskakująco trafnie udało się wyciągnąć dosłowne tematy piosenki.
+
+|Słowo|Ranga|
+|-|-|
+|but|9|
+|duży|9|
+|mieć|8|
+|mały|7|
+|żołnierz|7|
+
+Poniżej dla porównania pierwsza zwrotka:
+
+```text
+Za duże buty miał
+mały żołnierz,
+na waszym progu stał
+mały żołnierz,
+do twojej matki mówił: "Mamo"
+i mówił jeszcze, że tak samo
+topole kryły jego dom, spalony dom.
+```
+
 Ciekawym pomysłem jest zbadanie, czy analiza tematu piosenki byłaby w stanie
 poprawić sustem proponowania utworów przez takie platfomy jak Spotify,
 ponieważ wyniki uzyskane w tym projekcie pokazują,

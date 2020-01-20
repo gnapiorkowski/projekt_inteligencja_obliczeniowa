@@ -74,7 +74,7 @@ def calculate_topics(text, author_title):
     model = LatentDirichletAllocation(n_components=number_of_topics, random_state=0)
 
     model.fit(tf)
-    no_top_words = 4
+    no_top_words = 5
     topics = display_topics(model, tf_feature_names, no_top_words)
     # print('\n -----------{}Topics-----------\n'.format(author_title))
     # print(topics)
