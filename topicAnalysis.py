@@ -44,22 +44,15 @@ def clean_song(item, bigrams=False):
 # print(df.head())
 
 # df.to_csv('songs.csv')
+
+
 df = pd.read_csv('processed.csv')
-df['text'] = df['stemmed_text'].apply(lambda s: s.replace('year', '').replace('s1', '').replace('v1', '').replace('v3', '') if (type(s) is str) else ' ')
+df['text'] = df['stemmed_text'].apply(lambda s: s.replace('year', '').replace('s1', '').replace('v1', '').replace('v3', '').replace(':', '') if (type(s) is str) else ' ')
 df['text'] = df['text'].apply(lambda s: re.sub(':[a-z0-9]{1,2}', '', s))
-print(df)
 
-vectorizer = CountVectorizer(max_df=0.85, min_df=10, token_pattern='\w+|\w+|\$[\d\.]+|\S+')
-
-tf = vectorizer.fit_transform(df['text']).toarray()
-
-tf_feature_names = vectorizer.get_feature_names()
-
-number_of_topics = 50
-model = LatentDirichletAllocation(n_components=number_of_topics, random_state=0)
-
-model.fit(tf)
-
+# for i, j in zip(df['author_title'], df['text']):
+#     print(i, j)
+# print(df)
 
 def display_topics(model, feature_names, no_top_words):
     topic_dict = {}
@@ -70,8 +63,32 @@ def display_topics(model, feature_names, no_top_words):
                         for i in topic.argsort()[:-no_top_words - 1:-1]]
     return pd.DataFrame(topic_dict)
 
-no_top_words = 10
-topics = display_topics(model, tf_feature_names, no_top_words)
-print('\n -----------Topics-----------\n')
-print(topics)
-# topics.to_csv('topics_main.csv')
+def calculate_topics(text, author_title):
+    vectorizer = CountVectorizer(max_df=1, min_df=1, token_pattern='\w+|\w+|\$[\d\.]+|\S+')
+
+    tf = vectorizer.fit_transform([text]).toarray()
+
+    tf_feature_names = vectorizer.get_feature_names()
+
+    number_of_topics = 1
+    model = LatentDirichletAllocation(n_components=number_of_topics, random_state=0)
+
+    model.fit(tf)
+    no_top_words = 4
+    topics = display_topics(model, tf_feature_names, no_top_words)
+    # print('\n -----------{}Topics-----------\n'.format(author_title))
+    # print(topics)
+    return topics
+    topics.to_csv('./topics/{}_topic.csv'.format(author_title))
+
+df2 = pd.DataFrame({'Topic 0 words':[], 'Topic 0 weights':[], 'author_title':[]})
+for auth, text in zip(df['author_title'], df['text']):
+    try:
+        tmp = calculate_topics(text, auth)
+        tmp2 = pd.DataFrame({'author_title': [auth for i in range(4)]})
+        tmp = pd.concat([tmp, tmp2], axis=1)
+        df2 = df2.append(tmp, ignore_index = True)
+    except:
+        print('Error in: {}'.format(auth))
+print(df2)
+df2.to_csv('topics_per_song.csv')
