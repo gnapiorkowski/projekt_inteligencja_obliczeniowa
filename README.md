@@ -480,9 +480,8 @@ topole kryły jego dom, spalony dom.
 Po porównaniu tematów piosenek między sobą, tak jak opisano to w poprzednim rozdziale,
 wyszły następujące wyniki:
 
-(Tabela zawiera tylko przykładowe największe wartości, 
-większość piosenek miało podobieństwo 0%. Całoś wyników z pominięciem
-wyników zerowych można znaleźć w pliku
+(Tabela zawiera tylko przykładowe  wartości z włączeniem kilku największych.
+Większość piosenek miało podobieństwo 0% i zostało pominięte. Całoś wyników z pominięciem wyników zerowych można znaleźć w pliku
 [topics_similarities.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics_similarities.csv)
 )
 
