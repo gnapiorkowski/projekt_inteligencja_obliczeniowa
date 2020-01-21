@@ -480,7 +480,7 @@ topole kryły jego dom, spalony dom.
 Po porównaniu tematów piosenek między sobą, tak jak opisano to w poprzednim rozdziale,
 wyszły następujące wyniki:
 
-(Tabela zawiera tylko przykładowe największe wartości, podane w %, 
+(Tabela zawiera tylko przykładowe największe wartości, 
 większość piosenek miało podobieństwo 0%. Całoś wyników z pominięciem
 wyników zerowych można znaleźć w pliku
 [topics_similarities.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics_similarities.csv)
@@ -500,6 +500,7 @@ index|artist1|artist2|similarity
 244184|lzy ja_nie_lubie_nikogo|lzy nie_lubie_nikogo|0.9999999999999998
 208501|krzysztof_krawczyk zawsze_z_toba_chcialbym_byc|ich_troje zawsze_z_toba_chcialbym_byc|0.920940170940171
 72843|czerwone_gitary historia_jednej_znajomosci|myslovitz historia_jednej_znajomosci|0.9020793036750483
+287171|wilki dziewczyna_z_gitara|myslovitz w_sieci_|0.3333333333333333
 
 Zwróćmy uwagę na indexy, porównanie kilu tysięcy piosenek ze sobą daje bardzo dużo wyników
 
