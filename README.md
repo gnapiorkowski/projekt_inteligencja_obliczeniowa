@@ -351,6 +351,37 @@ Wynikiem tej analizy jest tabela wyglądająca tak:
 Aby otrzymać wyniki dla konkretnych tekstów należy ująć powyższy kod w funkcję i wywołać
 ją dla każdego pliku z osobna.
 
+Do porównania podobieństwa piosenek po stworzeniu listy tematów dla każdej piosenki z osobna wykorzystujemy
+długą, lecz prostą funkcję, która powinna wyglądać mniej więcej tak:
+
+```python
+for i, (word, weight, auth_tit) in enumerate(zip(df['Topic 0 words'], df['Topic 0 weights'], df['author_title'])):
+    if(auth_tit not in artists):
+        artists[auth_tit] = dict()
+    if('words' not in artists[auth_tit]):
+        artists[auth_tit]['words'] = []
+        artists[auth_tit]['weights'] = []
+    artists[auth_tit]['words'].append(word) 
+    artists[auth_tit]['weights'].append(weight) 
+
+
+result=dict()
+result['artist1'] = []
+result['artist2'] = []
+result['similarity'] = []
+for X, Y in combinations(artists.keys(), 2):
+    x_w_sum = sum(artists[X]['weights'])
+    y_w_sum = sum(artists[Y]['weights'])
+    similarity = 0
+    for i, w in enumerate(artists[X]['words']):
+        if w in artists[Y]['words']:
+            similarity += (artists[X]['weights'][i]/x_w_sum + artists[Y]['weights'][artists[Y]['words'].index(w)]/y_w_sum)/2
+    if similarity > 0:
+        result['artist1'].append(X)
+        result['artist2'].append(Y)
+        result['similarity'].append(similarity)
+```
+
 ## Wyniki i interpretacja
 
 ### WordCloud
@@ -445,6 +476,32 @@ do twojej matki mówił: "Mamo"
 i mówił jeszcze, że tak samo
 topole kryły jego dom, spalony dom.
 ```
+
+Po porównaniu tematów piosenek między sobą, tak jak opisano to w poprzednim rozdziale,
+wyszły następujące wyniki:
+
+(Tabela zawiera tylko przykładowe największe wartości, podane w %, 
+większość piosenek miało podobieństwo 0%. Całoś wyników z pominięciem
+wyników zerowych można znaleźć w pliku
+[topics_similarities.csv](https://github.com/gnapiorkowski/projekt_inteligencja_obliczeniowa/blob/master/topics_similarities.csv)
+)
+
+index|artist1|artist2|similarity
+-|-|-|-
+87065|elektryczne_gitary to_juz_jest_koniec|elektryczne_gitary koniec|1.0
+258023|krzysztof_krawczyk nie_wierz_nigdy_kobiecie|lady_pank nie_wierz_nigdy_kobiecie|1.0
+110680|golec_uorkiestra wsrod_nocnej_ciszy|budka_suflera wsrod_nocnej_ciszy|1.0
+183695|budka_suflera nowa_wieza_babel|budka_suflera wieza_babel|1.0
+24201|kult children_know_better|kult dzieci_wiedza_lepiej|1.0
+230117|czerwone_gitary byle_co|czerwone_gitary nie_daj_sie_nabrac|1.0
+274999|marek_grechuta lanckorona|marek_grechuta widok_z_balkonu|1.0
+44493|maryla_rodowicz furtki_trzy|maryla_rodowicz do_raju_furtki_trzy|1.0
+56294|czerwone_gitary droga__ktora_ide|maryla_rodowicz droga_ktora_ide|1.0
+244184|lzy ja_nie_lubie_nikogo|lzy nie_lubie_nikogo|0.9999999999999998
+208501|krzysztof_krawczyk zawsze_z_toba_chcialbym_byc|ich_troje zawsze_z_toba_chcialbym_byc|0.920940170940171
+72843|czerwone_gitary historia_jednej_znajomosci|myslovitz historia_jednej_znajomosci|0.9020793036750483
+
+Zwróćmy uwagę na indexy, porównanie kilu tysięcy piosenek ze sobą daje bardzo dużo wyników
 
 Ciekawym pomysłem jest zbadanie, czy analiza tematu piosenki byłaby w stanie
 poprawić sustem proponowania utworów przez takie platfomy jak Spotify,

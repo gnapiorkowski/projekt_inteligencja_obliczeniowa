@@ -85,7 +85,7 @@ df2 = pd.DataFrame({'Topic 0 words':[], 'Topic 0 weights':[], 'author_title':[]}
 for auth, text in zip(df['author_title'], df['text']):
     try:
         tmp = calculate_topics(text, auth)
-        tmp2 = pd.DataFrame({'author_title': [auth for i in range(4)]})
+        tmp2 = pd.DataFrame({'author_title': [auth for i in range(5)]})
         tmp = pd.concat([tmp, tmp2], axis=1)
         df2 = df2.append(tmp, ignore_index = True)
     except:
